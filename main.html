@@ -61,24 +61,28 @@ You have completed <input type="text" id="trial" readonly="readonly"> out of 32 
 //	document.getElementById("trial").innerHTML = trialnum;
 		
 	function nextPage(){
-//		<!-- If trial number is less than 32, call this page again -->
-		
 //		trialnum = Number(trialnum);
 		
-		if(trialnum < 32) {
-			rating = localStorage.getItem('rating');
+		rating = localStorage.getItem('rating');
+		if(trialnum < 32) { <!-- If trial number is less than 32, call this page again -->
+//		if(trialnum < 3) { <!-- TEST: If trial number is less than 3, call this page again -->
 			//concatenate string 'trial' with trialnum, save to curcol
-//			curcol="trial";
-//			curcol=curcol.concat(trialnum);
-//			localStorage.setItem(curcol,rating);
+			part1 = "trial";
+			part2 = trialnum.toString();
+			curcol=part1.concat(part2); 
+			localStorage.setItem(curcol,rating);
 			trialnum = trialnum + 1;
 			localStorage.setItem('trialnum',trialnum);
 			window.location.assign('ratings.html');
 		}
-		else { 
+		else { <!-- Else call the thank you page -->
+			part1 = "trial";
+			part2 = trialnum.toString();
+			curcol=part1.concat(part2); 
+			localStorage.setItem(curcol,rating);
 			localStorage.setItem('trialnum', null);
 			window.location.assign('thanks.html'); 
-		} <!-- Else call the thank you page -->
+		} 
 }
 </script>
 

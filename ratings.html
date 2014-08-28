@@ -139,8 +139,9 @@ e.      Total Impression
 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
-<script type = "text/javascript">
- 
+<script>
+	var sliderVals=[];
+	
      // Only the final slider position is needed here.
       $( "#slider" ).slider({
         value: 50,
@@ -150,7 +151,7 @@ e.      Total Impression
         //this updates the value of your hidden field when user stops dragging
         change: function(event, ui) {
            $('#rateToPost').attr('value', ui.value);
-			sliderVal=ui.value;
+			sliderVals.push(ui.value);
          }
     });
 
@@ -163,8 +164,8 @@ e.      Total Impression
         //this updates the value of your hidden field when user stops dragging
         change: function(event, ui) {
            $('#rateToPost2').attr('value2', ui.value);
-			sliderVal2=ui.value;
-         }
+			sliderVals.push(ui.value); 
+ }
     });
 	   
 	$( "#slider3" ).slider({
@@ -175,8 +176,8 @@ e.      Total Impression
         //this updates the value of your hidden field when user stops dragging
         change: function(event, ui) {
            $('#rateToPost3').attr('value3', ui.value);
-			sliderVal3=ui.value;
-         }
+			sliderVals.push(ui.value); 
+		}
     });
 
 	$( "#slider4" ).slider({
@@ -187,7 +188,7 @@ e.      Total Impression
         //this updates the value of your hidden field when user stops dragging
         change: function(event, ui) {
            $('#rateToPost4').attr('value4', ui.value);
-			sliderVal4=ui.value;
+			sliderVals.push(ui.value);
          }
     });
 
@@ -199,12 +200,10 @@ e.      Total Impression
         //this updates the value of your hidden field when user stops dragging
         change: function(event, ui) {
            $('#rateToPost5').attr('value5', ui.value);
-			sliderVal5=ui.value;
+			sliderVals.push(ui.value);
          }
     });	
-	
-	sliderVals=[sliderVal, sliderVal2, sliderVal3, sliderVal4, sliderVal5];
-	
+		
 </script>
 
 	
@@ -235,30 +234,30 @@ Do you think the hearing aid settings were changed between hearing the PREVIOUS 
 
 	function nextPage(){
 
-//			if (document.getElementById('previous').checked) {
+			if (document.getElementById('previous').checked) {
 //				localStorage.setItem('soundPreference','previous');
-//				sliderVals = sliderVals.concat('previous');
-//			}
-//			else if (document.getElementById('current').checked) {
+				sliderVals.push(-1);
+			}
+			else if (document.getElementById('current').checked) {
 //				localStorage.setItem('soundPreference','current');
-//				sliderVals = sliderVals.concat('current');
-//			}
-//			else if (document.getElementById('nopref').checked) {
+				sliderVals.push(1);
+			}
+			else if (document.getElementById('nopref').checked) {
 //				localStorage.setItem('soundPreference','nopref');
-//				sliderVals = sliderVals.concat('nopref');
-//			}
-			
-//			if (document.getElementById('change').checked) {
+				sliderVals.push(0);
+			}
+	
+			if (document.getElementById('change').checked) {
 //				localStorage.setItem('soundPreference','previous');
-//				sliderVals = sliderVals.concat('change');
-//			}
-//			else if (document.getElementById('nochange').checked) {
+				sliderVals.push(1);
+			}
+			else if (document.getElementById('nochange').checked) {
 //				localStorage.setItem('soundPreference','current');
-//				sliderVals = sliderVals.concat('nochange');
-//			}
+				sliderVals.push(0);
+			}
 			
-//			localStorage.setItem('rating', sliderVals.join(",")); // save list of slider changes and preference data
-
+			localStorage.setItem('rating', sliderVals.join(",")); // save list of slider changes and preference data
+			console.log(sliderVals.join(","));
 			window.location.assign('main.html');
 	}
     
