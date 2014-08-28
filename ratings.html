@@ -7,7 +7,10 @@
     Not sure if this is a mistake or just wasn't copied over...leaving as a reminder for now
     <link rel="stylesheet" href="/resources/demos/style.css">
     -->
-  </head>
+
+	<title> Rate What You Heard </title>
+	</head>
+  
   <body>
 
 
@@ -16,7 +19,7 @@
 Run number <input type="text" id="code" readonly="readonly"> out of 32.
 	trialnum = localStorage.getItem('trialnum'); -->
 	
-<h2> Instructions: Think about the sound of the sentences you just heard. </h2>
+<h2> Instructions: Think about the sound of the sentences you just heard as you answer the questions below. </h2>
 
 <!--
 a.      Intelligibility
@@ -48,7 +51,7 @@ e.      Total Impression
       </tr>
 </table>
 
-<br><br>
+<!--<br><br>
 2. Rate the <b>loudness</b> of the sentences you just listened to.
 <table width="100%" border="0">
       <tr>
@@ -67,7 +70,7 @@ e.      Total Impression
           <div id="ratingResult2"></div>
         </td>
       </tr>
-</table>
+</table> -->
 
 <br><br>
 
@@ -156,17 +159,17 @@ e.      Total Impression
     });
 
 	   
-	$( "#slider2" ).slider({
-        value: 50,
-        min: 0,
-        max: 100,
+//	$( "#slider2" ).slider({
+//        value: 50,
+//        min: 0,
+//        max: 100,
 
         //this updates the value of your hidden field when user stops dragging
-        change: function(event, ui) {
-           $('#rateToPost2').attr('value2', ui.value);
-			sliderVals.push(ui.value); 
- }
-    });
+//        change: function(event, ui) {
+//           $('#rateToPost2').attr('value2', ui.value);
+//			sliderVals.push(ui.value); 
+ //}
+ //   });
 	   
 	$( "#slider3" ).slider({
         value: 50,
@@ -207,7 +210,8 @@ e.      Total Impression
 </script>
 
 	
-<p> 6. Now think about the sentences you just heard (the CURRENT sentences), and the sentences you heard before your last rating (the PREVIOUS sentences). Which did you prefer? </p>
+<p> 6. Now think about the sentences you just heard (the CURRENT sentences), and the sentences you heard before your last rating (the PREVIOUS sentences). 
+Which did you prefer?</p>
 
 <form action="">  <!-- Where should the result go? -->
 <input type="radio" id="previous" name="soundPreference" value="previous">I preferred the sound of the PREVIOUS two sentences.<br>
@@ -216,7 +220,7 @@ e.      Total Impression
 
 <br><br><br>
 <p> 7. Think again about the sentences you just heard (the CURRENT sentences), and the sentences you heard before your last rating (the PREVIOUS sentences). 
-Do you think the hearing aid settings were changed between hearing the PREVIOUS sentences and the CURRENT sentences? </p>
+Do you think the hearing aid settings were changed between hearing the PREVIOUS sentences and the CURRENT sentences? Guess if you are unsure.</p>
 <input type="radio" id="change" name="discrimination" value="change">I think the hearing aid settings WERE changed.<br>
 <input type="radio" id="nochange" name="discrimination" value="nochange">I think the hearing aid settings WERE NOT changed.
 
