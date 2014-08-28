@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="stylesheets/app.css">
+    <!--
+    Not sure if this is a mistake or just wasn't copied over...leaving as a reminder for now
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    -->
+  </head>
+  <body>
+
+
+<!-- <h1>Instructions</h1> 
+	
+Run number <input type="text" id="code" readonly="readonly"> out of 32.
+	trialnum = localStorage.getItem('trialnum'); -->
+	
+<h2> Instructions: Think about the sound of the sentences you just heard. </h2>
+
+<!--
+a.      Intelligibility
+b.      Loudness
+c.      Pleasantness
+d.      Effort
+e.      Total Impression
+-->
+
+<!-- Set up slider in full screenwidth table -->
+<br>
+1. How hard was it to <b>understand</b> the sentences you just listened to?
+   <table width="100%" border="0">
+      <tr>
+        <td>
+          <div style="float:left;width:50%;">HARD to understand</div>
+          <div style="float:right;text-align:right;width:50%;">EASY to understand</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="slider"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ratingResult"></div>
+        </td>
+      </tr>
+</table>
+
+<br><br>
+2. Rate the <b>loudness</b> of the sentences you just listened to.
+<table width="100%" border="0">
+      <tr>
+        <td>
+          <div style="float:left;width:50%;">NOT AT ALL loud</div>
+          <div style="float:right;text-align:right;width:50%;">VERY loud</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="slider2"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ratingResult2"></div>
+        </td>
+      </tr>
+</table>
+
+<br><br>
+
+3. Rate the <b>pleasantness</b> of the sentences you just listened to.
+<table width="100%" border="0">
+      <tr>
+        <td>
+          <div style="float:left;width:50%;">NOT AT ALL pleasant</div>
+          <div style="float:right;text-align:right;width:50%;">VERY pleasant</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="slider3"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ratingResult3"></div>
+        </td>
+      </tr>
+</table>
+
+<br><br>
+4. Rate the <b>effort</b> needed to listen to the sentences you just listened to. 
+<table width="100%" border="0">
+      <tr>
+        <td>
+          <div style="float:left;width:50%;">NOT AT ALL effortful</div>
+          <div style="float:right;text-align:right;width:50%;">VERY effortful</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="slider4"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ratingResult4"></div>
+        </td>
+      </tr>
+</table>
+
+<br><br>
+5. Rate your <b>total impression</b> of the sound quality of the sentences you just listened to. 
+<table width="100%" border="0">
+      <tr>
+        <td>
+          <div style="float:left;width:50%;">LOW overall quality</div>
+          <div style="float:right;text-align:right;width:50%;">HIGH overall quality</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="slider5"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ratingResult5"></div>
+        </td>
+      </tr>
+</table>
+
+<br>
+
+
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script type = "text/javascript">
+ 
+     // Only the final slider position is needed here.
+      $( "#slider" ).slider({
+        value: 50,
+        min: 0,
+        max: 100,
+
+        //this updates the value of your hidden field when user stops dragging
+        change: function(event, ui) {
+           $('#rateToPost').attr('value', ui.value);
+			sliderVal=ui.value;
+         }
+    });
+
+	   
+	$( "#slider2" ).slider({
+        value: 50,
+        min: 0,
+        max: 100,
+
+        //this updates the value of your hidden field when user stops dragging
+        change: function(event, ui) {
+           $('#rateToPost2').attr('value2', ui.value);
+			sliderVal2=ui.value;
+         }
+    });
+	   
+	$( "#slider3" ).slider({
+        value: 50,
+        min: 0,
+        max: 100,
+
+        //this updates the value of your hidden field when user stops dragging
+        change: function(event, ui) {
+           $('#rateToPost3').attr('value3', ui.value);
+			sliderVal3=ui.value;
+         }
+    });
+
+	$( "#slider4" ).slider({
+        value: 50,
+        min: 0,
+        max: 100,
+
+        //this updates the value of your hidden field when user stops dragging
+        change: function(event, ui) {
+           $('#rateToPost4').attr('value4', ui.value);
+			sliderVal4=ui.value;
+         }
+    });
+
+	$( "#slider5" ).slider({
+        value: 50,
+        min: 0,
+        max: 100,
+
+        //this updates the value of your hidden field when user stops dragging
+        change: function(event, ui) {
+           $('#rateToPost5').attr('value5', ui.value);
+			sliderVal5=ui.value;
+         }
+    });	
+	
+	sliderVals=[sliderVal, sliderVal2, sliderVal3, sliderVal4, sliderVal5];
+	
+</script>
+
+	
+<p> 6. Now think about the sentences you just heard (the CURRENT sentences), and the sentences you heard before your last rating (the PREVIOUS sentences). Which did you prefer? </p>
+
+<form action="">  <!-- Where should the result go? -->
+<input type="radio" id="previous" name="soundPreference" value="previous">I preferred the sound of the PREVIOUS two sentences.<br>
+<input type="radio" id="current" name="soundPreference" value="current">I preferred the sound of the CURRENT two sentences.<br>
+<input type="radio" id="nopref" name="soundPreference" value="nopref">I do not prefer the sound of one or the other.
+
+<br><br><br>
+<p> 7. Think again about the sentences you just heard (the CURRENT sentences), and the sentences you heard before your last rating (the PREVIOUS sentences). 
+Do you think the hearing aid settings were changed between hearing the PREVIOUS sentences and the CURRENT sentences? </p>
+<input type="radio" id="change" name="discrimination" value="change">I think the hearing aid settings WERE changed.<br>
+<input type="radio" id="nochange" name="discrimination" value="nochange">I think the hearing aid settings WERE NOT changed.
+
+<br><br><br>
+<button id="submit" onclick="nextPage()" type="button">Submit</button>
+
+</form>
+<br>
+<!-- 
+  User-initiated submit.
+  On submit, redirect to next instance of page.
+-->
+
+<script>
+
+	function nextPage(){
+
+//			if (document.getElementById('previous').checked) {
+//				localStorage.setItem('soundPreference','previous');
+//				sliderVals = sliderVals.concat('previous');
+//			}
+//			else if (document.getElementById('current').checked) {
+//				localStorage.setItem('soundPreference','current');
+//				sliderVals = sliderVals.concat('current');
+//			}
+//			else if (document.getElementById('nopref').checked) {
+//				localStorage.setItem('soundPreference','nopref');
+//				sliderVals = sliderVals.concat('nopref');
+//			}
+			
+//			if (document.getElementById('change').checked) {
+//				localStorage.setItem('soundPreference','previous');
+//				sliderVals = sliderVals.concat('change');
+//			}
+//			else if (document.getElementById('nochange').checked) {
+//				localStorage.setItem('soundPreference','current');
+//				sliderVals = sliderVals.concat('nochange');
+//			}
+			
+//			localStorage.setItem('rating', sliderVals.join(",")); // save list of slider changes and preference data
+
+			window.location.assign('main.html');
+	}
+    
+</script>
+
+
+<!--
+<script>
+	if (document.getElementById('r1').checked) {
+  rate_value = document.getElementById('r1').value;
+}
+	localStorage.setItem('Preference','soundPreference.value');
+</script>
+-->
+
+</body>
+</html>

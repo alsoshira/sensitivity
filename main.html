@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="stylesheets/app.css">
+    <!--
+    Not sure if this is a mistake or just wasn't copied over...leaving as a reminder for now
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    -->
+	
+
+
+  </head>
+  <body>
+
+  <!-- Generate random run sequence and push to cloud -->
+  
+  <!-- Call ratings.html 32 times with trial number (for progress -- optional) -->
+
+
+<script>
+	function shuffle(array) {
+		var currentIndex = array.length, temporaryValue, randomIndex ;
+
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+
+		// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+
+		return array;
+		
+
+	}
+</script>
+
+<br><br><br><br><br><br>
+You have completed <input type="text" id="trial" readonly="readonly"> out of 32 trials! When you're ready for the next one, click the continue button below.
+
+<br><br><br>
+<button id="main" onclick="nextPage()" type="button">CONTINUE</button>
+<script>
+
+	var trialnum = Number(localStorage.getItem('trialnum'));
+	console.log(trialnum);
+
+	if (isNaN(trialnum)) {
+//		var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
+//		arr = shuffle(arr);
+//		localStorage.setItem('order',arr);
+		trialnum = 0;
+	}
+	document.getElementById("trial").value = trialnum;
+//	document.getElementById("trial").innerHTML = trialnum;
+		
+	function nextPage(){
+//		<!-- If trial number is less than 32, call this page again -->
+		
+//		trialnum = Number(trialnum);
+		
+		if(trialnum < 32) {
+			rating = localStorage.getItem('rating');
+			//concatenate string 'trial' with trialnum, save to curcol
+//			curcol="trial";
+//			curcol=curcol.concat(trialnum);
+//			localStorage.setItem(curcol,rating);
+			trialnum = trialnum + 1;
+			localStorage.setItem('trialnum',trialnum);
+			window.location.assign('ratings.html');
+		}
+		else { 
+			localStorage.setItem('trialnum', null);
+			window.location.assign('thanks.html'); 
+		} <!-- Else call the thank you page -->
+}
+</script>
+
+
+
+</body>
+</html>
