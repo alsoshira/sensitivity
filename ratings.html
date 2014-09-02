@@ -2,7 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="stylesheets/app.css">
+	<link rel="stylesheet" href="stylesheets/style.css" type="text/css">
     <!--
     Not sure if this is a mistake or just wasn't copied over...leaving as a reminder for now
     <link rel="stylesheet" href="/resources/demos/style.css">
@@ -18,8 +18,16 @@
 	
 Run number <input type="text" id="code" readonly="readonly"> out of 32.
 	trialnum = localStorage.getItem('trialnum'); -->
-	
-<h2> Instructions: Think about the sound of the sentences you just heard as you answer the questions below. </h2>
+
+	<div id="header">
+		<div>
+<h2> Instructions: <br>Think about the sound of the sentences you just heard as you answer the questions below. </h2>		</div>
+	</div>
+
+
+<div id="contents">
+
+
 
 <!--
 a.      Intelligibility
@@ -74,7 +82,7 @@ e.      Total Impression
 
 <br><br>
 
-3. Rate the <b>pleasantness</b> of the sentences you just listened to.
+2. Rate the <b>pleasantness</b> of the sentences you just listened to.
 <table width="100%" border="0">
       <tr>
         <td>
@@ -95,7 +103,7 @@ e.      Total Impression
 </table>
 
 <br><br>
-4. Rate the <b>effort</b> needed to listen to the sentences you just listened to. 
+3. Rate the <b>effort</b> needed to listen to the sentences you just listened to. 
 <table width="100%" border="0">
       <tr>
         <td>
@@ -116,7 +124,7 @@ e.      Total Impression
 </table>
 
 <br><br>
-5. Rate your <b>total impression</b> of the sound quality of the sentences you just listened to. 
+4. Rate your <b>total impression</b> of the sound quality of the sentences you just listened to. 
 <table width="100%" border="0">
       <tr>
         <td>
@@ -209,26 +217,28 @@ e.      Total Impression
 		
 </script>
 
-	
-<p> 6. Now think about the sentences you just heard (the CURRENT sentences), and the sentences you heard before your last rating (the PREVIOUS sentences). 
-Which did you prefer?</p>
-
+	<br>
+5. Now think about the sentences you just heard (the <b>current</b> sentences), and the sentences you heard before your last rating (the <b>previous</b> sentences). 
+Which did you prefer?
+<br><br>
 <form action="">  <!-- Where should the result go? -->
-<input type="radio" id="previous" name="soundPreference" value="previous">I preferred the sound of the PREVIOUS two sentences.<br>
-<input type="radio" id="current" name="soundPreference" value="current">I preferred the sound of the CURRENT two sentences.<br>
+<input type="radio" id="previous" name="soundPreference" value="previous">I preferred the sound of the <b>PREVIOUS</b> two sentences.<br>
+<input type="radio" id="current" name="soundPreference" value="current">I preferred the sound of the <b>CURRENT</b> two sentences.<br>
 <input type="radio" id="nopref" name="soundPreference" value="nopref">I do not prefer the sound of one or the other.
 
 <br><br><br>
-<p> 7. Think again about the sentences you just heard (the CURRENT sentences), and the sentences you heard before your last rating (the PREVIOUS sentences). 
-Do you think the hearing aid settings were changed between hearing the PREVIOUS sentences and the CURRENT sentences? Guess if you are unsure.</p>
-<input type="radio" id="change" name="discrimination" value="change">I think the hearing aid settings WERE changed.<br>
-<input type="radio" id="nochange" name="discrimination" value="nochange">I think the hearing aid settings WERE NOT changed.
+6. Think again about the sentences you just heard (the <b>current</b> sentences), and the sentences you heard before your last rating (the <b>previous</b> sentences). 
+Do you think the hearing aid settings were changed between hearing the <b>previous</b> sentences and the <b>current</b> sentences? Guess if you are unsure.
+<br><br>
+<input type="radio" id="change" name="discrimination" value="change">I think the hearing aid settings <b>WERE</b> changed.<br>
+<input type="radio" id="nochange" name="discrimination" value="nochange">I think the hearing aid settings <b>WERE NOT</b> changed.
 
 <br><br><br>
 <button id="submit" onclick="nextPage()" type="button">Submit</button>
 
 </form>
 <br>
+</div>
 <!-- 
   User-initiated submit.
   On submit, redirect to next instance of page.

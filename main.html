@@ -2,11 +2,9 @@
 <html>
   <head>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="stylesheets/app.css">
-    <!--
-    Not sure if this is a mistake or just wasn't copied over...leaving as a reminder for now
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    -->
+ <!--   <link rel="stylesheet" href="stylesheets/style.css"> -->
+	<link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+
 	<title> Ready for the next sentences? </title>
   </head>
   <body>
@@ -38,12 +36,52 @@
 
 	}
 </script>
+	<div id="header">
+		<div>
+			<div class="logo">
+				<a href="index.html"></a>
+			</div>
+			<ul id="navigation">
+				<li class="active">
+					<a href="index.html"></a>
+				</li>
+				<li>
+					<a href="features.html"></a>
+				</li>
+				<li>
+					<a href="news.html"></a>
+				</li>
+				<li>
+					<a href="about.html"></a>
+				</li>
+				<li>
+					<a href="contact.html"></a>
+				</li>
+			</ul>
+		</div>
+	</div>
 
-<br><br><br><br><br><br>
-You have completed <input type="text" id="trial" readonly="readonly"> out of 32 trials! When you're ready for the next one, click the continue button below.
+	<div id="adbox">
+		<div class="clearfix">
+
+			<div>
+
+				<p>
+					<h2>You have completed <input type="text" id="trial" readonly="readonly" size="2"> out of 32 trials!</h2>
+					When you're ready for the next one, click the continue button below and tell the experimenter that you are ready.</p><br>
+					<font color="blue">Be patient:</font> It may take up to 30 seconds for the next trial to begin.<br><br>
+					<span><button id="main" onclick="nextPage()" type="button">CONTINUE</button></span>
+			</div>
+		</div>
+	</div>
+	
+<br><br><br>
+<br><br><br>
+
 
 <br><br><br>
-<button id="main" onclick="nextPage()" type="button">CONTINUE</button>
+
+
 <script>
 
 	var trialnum = Number(localStorage.getItem('trialnum'));
