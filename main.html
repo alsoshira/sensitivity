@@ -100,7 +100,6 @@
 //		trialnum = Number(trialnum);
 		
 		rating = localStorage.getItem('rating');
-//		if(trialnum < 32) { <!-- If trial number is less than 32, call this page again -->
 		if(trialnum == 0) { <!-- TEST: If trial number is less than 3, call this page again -->
 			//concatenate string 'trial' with trialnum, save to curcol
 			part1 = "trial";
@@ -111,7 +110,7 @@
 			localStorage.setItem('trialnum',trialnum);
 			window.location.assign('ratings1.html');
 		}
-		else if(trialnum < 3) { <!-- TEST: If trial number is less than 3, call this page again -->
+		else if(trialnum < 32) { <!-- If trial number is less than 32, call this page again -->
 			//concatenate string 'trial' with trialnum, save to curcol
 			part1 = "trial";
 			part2 = trialnum.toString();
