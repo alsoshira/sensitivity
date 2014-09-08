@@ -233,20 +233,6 @@ e.      Total Impression
 </script>
 
 <br>
-5. Now think about the sentences you just heard (the <b>current</b> sentences), and the sentences you heard before your last rating (the <b>previous</b> sentences). 
-Which did you prefer?
-<br><br>
-<form action="">  <!-- Where should the result go? -->
-<input type="radio" id="previous" name="soundPreference" value="previous">I preferred the sound of the <b>PREVIOUS</b> two sentences.<br>
-<input type="radio" id="current" name="soundPreference" value="current">I preferred the sound of the <b>CURRENT</b> two sentences.<br>
-<input type="radio" id="nopref" name="soundPreference" value="nopref">I do not prefer the sound of one or the other.
-
-<br><br><br>
-6. Think again about the sentences you just heard (the <b>current</b> sentences), and the sentences you heard before your last rating (the <b>previous</b> sentences). 
-Do you think the hearing aid settings were changed between hearing the <b>previous</b> sentences and the <b>current</b> sentences? Guess if you are unsure.
-<br><br>
-<input type="radio" id="change" name="discrimination" value="change">I think the hearing aid settings <b>WERE</b> changed.<br>
-<input type="radio" id="nochange" name="discrimination" value="nochange">I think the hearing aid settings <b>WERE NOT</b> changed.
 
 <br><br><br>
 <button id="submit" onclick="nextPage()" type="button">Submit</button>
@@ -262,28 +248,6 @@ Do you think the hearing aid settings were changed between hearing the <b>previo
 <script>
 
 	function nextPage(){
-
-			if (document.getElementById('previous').checked) {
-//				localStorage.setItem('soundPreference','previous');
-				sliderVals.push(-1);
-			}
-			else if (document.getElementById('current').checked) {
-//				localStorage.setItem('soundPreference','current');
-				sliderVals.push(1);
-			}
-			else if (document.getElementById('nopref').checked) {
-//				localStorage.setItem('soundPreference','nopref');
-				sliderVals.push(0);
-			}
-	
-			if (document.getElementById('change').checked) {
-//				localStorage.setItem('soundPreference','previous');
-				sliderVals.push(1);
-			}
-			else if (document.getElementById('nochange').checked) {
-//				localStorage.setItem('soundPreference','current');
-				sliderVals.push(0);
-			}
 			
 			localStorage.setItem('rating', sliderVals.join(",")); // save list of slider changes and preference data
 			console.log(sliderVals.join(","));
