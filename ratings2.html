@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+    <!--
+    Not sure if this is a mistake or just wasn't copied over...leaving as a reminder for now
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    -->
+
+	<title> Rate What You Heard </title>
+	</head>
+  
+  <body>
+
+
+<!-- <h1>Instructions</h1> 
+	
+Run number <input type="text" id="code" readonly="readonly"> out of 32.
+	trialnum = localStorage.getItem('trialnum'); -->
+
+	<div id="header">
+		<div>
+<h2> Instructions: <br>Think about the sound of the sentences you just heard as you answer the questions below. </h2>		</div>
+	</div>
+
+
+<div id="contents">
+
+
+
+<!--
+a.      Naturalness
+b.      Clarity
+-->
+
+<!-- Set up slider in full screenwidth table -->
+<br>
+
+1. Rate the <b>naturalness</b> of the sentences you just listened to.
+<table width="100%" border="0">
+      <tr>
+        <td>
+          <div style="float:left;width:50%;">NOT AT ALL natural</div>
+          <div style="float:right;text-align:right;width:50%;">VERY natural</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="slider"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ratingResult"></div>
+        </td>
+      </tr>
+</table>
+
+<br><br>
+2. Rate the <b>clarity</b> of the sentences you just listened to. 
+<table width="100%" border="0">
+      <tr>
+        <td>
+          <div style="float:left;width:50%;">NOT AT ALL clear</div>
+          <div style="float:right;text-align:right;width:50%;">VERY clear</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="slider2"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ratingResult2"></div>
+        </td>
+      </tr>
+</table>
+
+<br>
+
+
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script>
+	var sliderVals=[-1,-1,-1,-1];
+	
+     // Only the final slider position is needed here.
+      $( "#slider" ).slider({
+        value: 50,
+        min: 0,
+        max: 100,
+
+		slide: function( event, ui ) {
+          $( "#ratingResult" ).text( ui.value );
+        },
+        //this updates the value of your hidden field when user stops dragging
+        change: function(event, ui) {
+           $('#rateToPost').attr('value', ui.value);
+			sliderVals[0] = ui.value;
+        }
+    });
+
+	   	   
+	$( "#slider2" ).slider({
+        value: 50,
+        min: 0,
+        max: 100,
+
+  		slide: function( event, ui ) {
+          $( "#ratingResult2" ).text( ui.value );
+        },
+      //this updates the value of your hidden field when user stops dragging
+        change: function(event, ui) {
+           $('#rateToPost2').attr('value2', ui.value);
+		   sliderVals[1] = ui.value;
+//			sliderVals.push(ui.value); 
+		}
+    });
+		
+</script>
+
+<br>
+
+<br><br><br>
+<button id="submit" onclick="nextPage()" type="button">Submit</button>
+
+</form>
+<br>
+</div>
+<!-- 
+  User-initiated submit.
+  On submit, redirect to next instance of page.
+-->
+
+<script>
+
+	function nextPage(){
+			
+			localStorage.setItem('rating', sliderVals.join(",")); // save list of slider changes and preference data
+			console.log(sliderVals.join(","));
+			window.location.assign('main.html');
+	}
+    
+</script>
+
+
+<!--
+<script>
+	if (document.getElementById('r1').checked) {
+  rate_value = document.getElementById('r1').value;
+}
+	localStorage.setItem('Preference','soundPreference.value');
+</script>
+-->
+
+</body>
+</html>

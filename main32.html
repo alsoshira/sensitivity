@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+ <!--   <link rel="stylesheet" href="stylesheets/style.css"> -->
+	<link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+
+	<title> Ready for the next sentences? </title>
+  </head>
+  <body>
+
+  <!-- Generate random run sequence and push to cloud -->
+  
+  <!-- Call ratings.html 32 times with trial number (for progress -- optional) -->
+
+
+<script>
+	function shuffle(array) {
+		var currentIndex = array.length, temporaryValue, randomIndex ;
+
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+
+		// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+
+		return array;
+		
+
+	}
+</script>
+	<div id="header">
+		<div>
+			<div class="logo">
+				<a href="index.html"></a>
+			</div>
+			<ul id="navigation">
+				<li class="active">
+					<a href="index.html"></a>
+				</li>
+				<li>
+					<a href="features.html"></a>
+				</li>
+				<li>
+					<a href="news.html"></a>
+				</li>
+				<li>
+					<a href="about.html"></a>
+				</li>
+				<li>
+					<a href="contact.html"></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="adbox">
+		<div class="clearfix">
+
+			<div>
+
+				<p>
+					<h2>You have completed <input type="text" id="trial" readonly="readonly" size="2"> out of 32 trials!</h2>
+					When you're ready for the next one, click the continue button below and tell the experimenter that you are ready.</p><br>
+<!--					<font color="blue">Be patient:</font> It may take up to 30 seconds for the next trial to begin.<br><br> -->
+					<span><button id="main" onclick="nextPage()" type="button">CONTINUE</button></span>
+			</div>
+		</div>
+	</div>
+	
+<br><br><br>
+<br><br><br>
+
+
+<br><br><br>
+
+
+<script>
+
+	var trialnum = Number(localStorage.getItem('trialnum'));
+	console.log(trialnum);
+
+	if (isNaN(trialnum)) {
+//		var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
+//		arr = shuffle(arr);
+//		localStorage.setItem('order',arr);
+		trialnum = 0;
+	}
+	document.getElementById("trial").value = trialnum;
+//	document.getElementById("trial").innerHTML = trialnum;
+		
+	function nextPage(){
+//		trialnum = Number(trialnum);
+		
+		rating = localStorage.getItem('rating');
+		if(trialnum == 0) { 
+			//concatenate string 'trial' with trialnum, save to curcol
+			part1 = "trial";
+			part2 = trialnum.toString();
+			curcol=part1.concat(part2); 
+			localStorage.setItem(curcol,rating);
+			trialnum = trialnum + 1;
+			localStorage.setItem('trialnum',trialnum);
+			window.location.assign('instructions.html');
+		}
+		else if(trialnum < 32) { <!-- If trial number is less than 32, call this page again -->
+			//concatenate string 'trial' with trialnum, save to curcol
+			part1 = "trial";
+			part2 = trialnum.toString();
+			curcol=part1.concat(part2); 
+			localStorage.setItem(curcol,rating);
+			trialnum = trialnum + 1;
+			localStorage.setItem('trialnum',trialnum);
+			window.location.assign('ratings2.html');
+		}
+		else { <!-- Else call the thank you page -->
+			part1 = "trial";
+			part2 = trialnum.toString();
+			curcol=part1.concat(part2); 
+			localStorage.setItem(curcol,rating);
+			localStorage.setItem('trialnum', null);
+			window.location.assign('thanks.html'); 
+		} 
+}
+</script>
+
+
+
+</body>
+</html>

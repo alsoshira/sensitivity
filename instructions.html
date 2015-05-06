@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+ <!--   <link rel="stylesheet" href="stylesheets/style.css"> -->
+	<link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+
+	<title> Ready for the next sentences? </title>
+  </head>
+  <body>
+
+	<div id="header">
+		<div>
+			<div class="logo">
+				<a href="index.html"></a>
+			</div>
+			<ul id="navigation">
+				<li class="active">
+					<a href="index.html"></a>
+				</li>
+				<li>
+					<a href="features.html"></a>
+				</li>
+				<li>
+					<a href="news.html"></a>
+				</li>
+				<li>
+					<a href="about.html"></a>
+				</li>
+				<li>
+					<a href="contact.html"></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="adbox">
+		<div class="clearfix">
+
+			<div>
+
+				<p>
+					We are testing new features on hearing aids. Your hearing aids have been programmed with one of these features. 
+					When you are ready, your experimenter will play a sentence for you. Repeat the sentence as you hear it. 
+					Don't worry if you can't hear all of the words. This test is hard! If you don't know a word, guess. </p><br>
+					<span><button id="main" onclick="nextPage()" type="button">CONTINUE</button></span>
+			</div>
+		</div>
+	</div>
+	
+	<br><br><br>
+<br><br><br>
+
+<script>
+	function nextPage(){
+		window.location.assign('ratings.html');
+	}
+</script>
+
+</body>
+</html>
