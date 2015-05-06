@@ -42,7 +42,6 @@
 				<p>
 					<h2>You have completed <input type="text" id="trial" readonly="readonly" size="2"> out of 32 trials!</h2>
 					When you're ready for the next one, click the continue button below and tell the experimenter that you are ready.</p><br>
-<!--					<font color="blue">Be patient:</font> It may take up to 30 seconds for the next trial to begin.<br><br> -->
 					<span><button id="main" onclick="nextPage()" type="button">CONTINUE</button></span>
 			</div>
 		</div>
@@ -68,7 +67,8 @@
 	}
 	document.getElementById("trial").value = trialnum;
 //	document.getElementById("trial").innerHTML = trialnum;
-		
+
+	console.log(trialnum);		
 	function nextPage(){
 //		trialnum = Number(trialnum);
 		
