@@ -33,20 +33,20 @@ Run number <input type="text" id="code" readonly="readonly"> out of 32.
       <center>
       <tr align=center>
         <td>Completely OPPOSITE of my expectations <br> 
-	    <input type="radio" name="expectations" value="1" id="expectations" 
-                  title="strongly agree" /></td>
+	    <input type="radio" name="expectations" value="1" id="compopp" 
+                  title="completely opposite"></td>
         <td>Somewhat OPPOSITE of my expectations <br>
-	    <input type="radio" name="expectations" value="2" id="expectations" 
-                 title="agree" /></td> 
+	    <input type="radio" name="expectations" value="2" id="someopp" 
+                 title="somewhat opposite"></td> 
         <td>NEITHER in line with nor opposite of my expectations <br>
-	    <input type="radio" name="expectations" value="3" id="expectations" 
-                 title="somewhat agree" /></td>
+	    <input type="radio" name="expectations" value="3" id="neutral" 
+                 title="neutral"></td>
 	    <td>Somewhat IN LINE WITH my expectations <br>
-	    <input type="radio" name="expectations" value="4" id="expectations"
-                 title="neutral" /></td>
+	    <input type="radio" name="expectations" value="4" id="someinline"
+                 title="somewhat in line"></td>
 	    <td>Completely IN LINE WITH my expectations <br>
-	    <input type="radio" name="expectations" value="5" id="expectations"
-                 title="somewhat disagree" /></td> 
+	    <input type="radio" name="expectations" value="5" id="compinline"
+                 title="completely in line"></td> 
       </tr>
       </center>
     </table>
@@ -57,12 +57,12 @@ Run number <input type="text" id="code" readonly="readonly"> out of 32.
 
     <table style="border: 1px solid black" width=30%>
       <tr align=center>
-        <td>YES <input type="radio" name="difference" value="1" id="difference" 
-                 title="strongly agree" /></td>
+        <td>YES <input type="radio" name="difference" value="1" id="differenceyes" 
+                 title="yes"></td>
       </tr>
       <tr align=center>
-	    <td>NO <input type="radio" name="difference" value="2" id="difference" 
-                 title="agree" /></td> 
+	    <td>NO <input type="radio" name="difference" value="2" id="differenceno" 
+                 title="no"></td> 
       </tr>
     </table>
 
@@ -74,35 +74,46 @@ Run number <input type="text" id="code" readonly="readonly"> out of 32.
   
  <script>
 	function nextPage(){
-		localStorage.setItem('CompletelyOpposite', 0); // save list of slider changes and preference data
-		localStorage.setItem('CompletelyOpposite', 0); // save list of slider changes and preference data
-		localStorage.setItem('Neutral', 0); // save list of slider changes and preference data
-		localStorage.setItem('SomewhatInLine', 0); // save list of slider changes and preference data
-		localStorage.setItem('CompletelyInLine', 0); // save list of slider changes and preference data
+		localStorage.setItem('CompletelyOpposite', 0); 
+		localStorage.setItem('SomewhatOpposite', 0); 
+		localStorage.setItem('Neutral', 0); 
+		localStorage.setItem('SomewhatInLine', 0); 
+		localStorage.setItem('CompletelyInLine', 0);
+				
+		if(document.getElementById('compopp').checked) { localStorage.setItem('CompletelyOpposite', '1'); }
+		else if(document.getElementById('someopp').checked) { localStorage.setItem('SomewhatOpposite', '1'); }
+		else if(document.getElementById('neutral').checked) { localStorage.setItem('Neutral', '1'); }
+		else if(document.getElementById('someinline').checked) { localStorage.setItem('SomewhatInLine', '1'); }
+		else if(document.getElementById('compinline').checked) { localStorage.setItem('CompletelyInLine', '1'); }
+		else { console.log('nothing is checked expectations'); }
 
-		switch(document.getElementById('expectations').value) {
+/*		$("input[type='radio'][name='expectations']:checked").val();
+		switch(document.getElementById('expectations').value) { // convert 5-valued radio button selection to 5 binary columns
 			
 			case 1:
-				localStorage.setItem('CompletelyOpposite', 'x'); // save list of slider changes and preference data
+				localStorage.setItem('CompletelyOpposite', '1'); 
 				break;
 			case 2:
-				localStorage.setItem('SomewhatOpposite', 'x'); // save list of slider changes and preference data
+				localStorage.setItem('SomewhatOpposite', '1'); 
 				break;
 			case 3:
-				localStorage.setItem('Neutral', 'x'); // save list of slider changes and preference data
+				localStorage.setItem('Neutral', '1'); 
 				break;
 			case 4:
-				localStorage.setItem('SomewhatInLine', 'x'); // save list of slider changes and preference data
+				localStorage.setItem('SomewhatInLine', '1');
 				break;
 			case 5:
-				localStorage.setItem('CompletelyInLine', 'x'); // save list of slider changes and preference data
+				localStorage.setItem('CompletelyInLine', '1');
 				break;
 
 		}
+*/
+//		localStorage.setItem('HearDifference', document.getElementById('difference').value); 
 
-		localStorage.setItem('HearDifference', document.getElementById('difference').value); // save list of slider changes and preference data
-		
-		console.log(document.getElementById('expectations').value);
+		if(document.getElementById('differenceyes').checked) { localStorage.setItem('HearDifference', '1'); }
+		else if(document.getElementById('differenceno').checked) { localStorage.setItem('HearDifference', '0'); }
+		else { console.log('nothing is checked difference'); }		
+
 		window.location.assign('main_smartbutton.html');
 	}
    </script>
