@@ -72,7 +72,7 @@ Run number <input type="text" id="code" readonly="readonly"> out of 32.
   
   </div>
   
-  <script>
+ <!-- <script>
 	function nextPage(){
 		localStorage.setItem('CompletelyOpposite', 0); // save list of slider changes and preference data
 		localStorage.setItem('CompletelyOpposite', 0); // save list of slider changes and preference data
@@ -105,26 +105,19 @@ Run number <input type="text" id="code" readonly="readonly"> out of 32.
 		console.log(document.getElementById('expectations').value);
 		window.location.assign('main_smartbutton.html');
 	
-    
- //   var data = localstorage.myData; // Your JSON data object goes here...
+   </script> -->
+   
+ <script type ="text/javascript">
+ function nextPage() {
 
-    var request = new XMLHttpRequest();
-    request.open('POST', 'https://rocky-springs-8858.herokuapp.com/entries', true);
-
-    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    request.setRequestHeader('X-Sheet-Key', '1z_W-b6OO6p-VPIR5ae4R5DefHB0iXNkGhPpIbnl_XlY');
-
-    request.onreadystatechange = function() {
-      if(request.readyState == 4 && request.status == 200) {
-        // looks like everything worked...do whatever you want
-        // here (redirect, etc)
-        console.log(request); //prints out result in your JavaScript console
-      }
-    }
-
-    request.send(JSON.stringify(localStorage));
-	}
+    set fso = CreateObject("Scripting.FileSystemObject");  
+    set s = fso.CreateTextFile("C:\test.txt", True);
+    s.writeline(document.getElementById('expectations').value);
+    s.writeline(document.getElementById('difference').value);
+    s.Close();
+ }
   </script>
+ 
  
 <!--
 <script>
