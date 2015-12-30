@@ -82,9 +82,9 @@
 			localStorage.setItem(curcol,rating);
 			trialnum = trialnum + 1;
 			localStorage.setItem('trialnum',trialnum);
-			window.location.assign('instructions.html');
+			window.location.assign('smart_instructions.html');
 		}
-		else if(trialnum < 4) { <!-- If trial number is less than 32, call this page again -->
+		else if(trialnum < 3) { <!-- If trial number is less than 32, call this page again -->
 			//concatenate string 'trial' with trialnum, save to curcol
 			part1 = "trial";
 			part2 = trialnum.toString();
