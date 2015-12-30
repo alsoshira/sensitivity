@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+    <!--
+    Not sure if this is a mistake or just wasn't copied over...leaving as a reminder for now
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    -->
+
+	<title> Rate What You Heard </title>
+
+	</head>
+  
+  <body>
+
+
+<!-- <h1>Instructions</h1> 
+	
+Run number <input type="text" id="code" readonly="readonly"> out of 32.
+	trialnum = localStorage.getItem('trialnum'); -->
+
+  <div id="header">
+    <div><h2> Instructions: <br>Think about the sound of the sentences you just heard as you answer the questions below. </h2></div>
+  </div>
+
+  <div id="contents">
+    <br>
+
+    <p>1. Rate how well the button did what you <b>expected</b> it to do using the scale below.</p>
+
+    <table style="border: 1px solid black">  
+      <center>
+      <tr align=center>
+        <td>Completely OPPOSITE of my expectations <br> 
+	    <input type="radio" name="expectations" value="1" id="expectations" 
+                  title="strongly agree" /></td>
+        <td>Somewhat OPPOSITE of my expectations <br>
+	    <input type="radio" name="expectations" value="2" id="expectations" 
+                 title="agree" /></td> 
+        <td>NEITHER in line with nor opposite of my expectations <br>
+	    <input type="radio" name="expectations" value="3" id="expectations" 
+                 title="somewhat agree" /></td>
+	    <td>Somewhat IN LINE WITH my expectations <br>
+	    <input type="radio" name="expectations" value="4" id="expectations"
+                 title="neutral" /></td>
+	    <td>Completely IN LINE WITH my expectations <br>
+	    <input type="radio" name="expectations" value="5" id="expectations"
+                 title="somewhat disagree" /></td> 
+      </tr>
+      </center>
+    </table>
+  
+  
+  <br><br>
+  <p>2. Did you hear a <b>difference</b> in the sound when you pushed the button?</p>
+
+    <table style="border: 1px solid black" width=30%>
+      <tr align=center>
+        <td>YES <input type="radio" name="difference" value="1" id="difference" 
+                 title="strongly agree" /></td>
+      </tr>
+      <tr align=center>
+	    <td>NO <input type="radio" name="difference" value="2" id="difference" 
+                 title="agree" /></td> 
+      </tr>
+    </table>
+
+  <br>
+  
+    <button id="submit" onclick="nextPage()" type="button">Submit</button>
+  
+  </div>
+  
+  <script>
+	function nextPage(){
+		localStorage.setItem('CompletelyOpposite', 0); // save list of slider changes and preference data
+		localStorage.setItem('CompletelyOpposite', 0); // save list of slider changes and preference data
+		localStorage.setItem('Neutral', 0); // save list of slider changes and preference data
+		localStorage.setItem('SomewhatInLine', 0); // save list of slider changes and preference data
+		localStorage.setItem('CompletelyInLine', 0); // save list of slider changes and preference data
+
+		switch(document.getElementById('expectations').value) {
+			
+			case 1:
+				localStorage.setItem('CompletelyOpposite', 'x'); // save list of slider changes and preference data
+				break;
+			case 2:
+				localStorage.setItem('SomewhatOpposite', 'x'); // save list of slider changes and preference data
+				break;
+			case 3:
+				localStorage.setItem('Neutral', 'x'); // save list of slider changes and preference data
+				break;
+			case 4:
+				localStorage.setItem('SomewhatInLine', 'x'); // save list of slider changes and preference data
+				break;
+			case 5:
+				localStorage.setItem('CompletelyInLine', 'x'); // save list of slider changes and preference data
+				break;
+
+		}
+
+		localStorage.setItem('HearDifference', document.getElementById('difference').value); // save list of slider changes and preference data
+		
+		console.log(document.getElementById('expectations').value);
+		window.location.assign('main_smartbutton.html');
+	
+    
+ //   var data = localstorage.myData; // Your JSON data object goes here...
+
+    var request = new XMLHttpRequest();
+    request.open('POST', 'https://rocky-springs-8858.herokuapp.com/entries', true);
+
+    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.setRequestHeader('X-Sheet-Key', '1z_W-b6OO6p-VPIR5ae4R5DefHB0iXNkGhPpIbnl_XlY');
+
+    request.onreadystatechange = function() {
+      if(request.readyState == 4 && request.status == 200) {
+        // looks like everything worked...do whatever you want
+        // here (redirect, etc)
+        console.log(request); //prints out result in your JavaScript console
+      }
+    }
+
+    request.send(JSON.stringify(localStorage));
+	}
+  </script>
+ 
+<!--
+<script>
+	if (document.getElementById('r1').checked) {
+  rate_value = document.getElementById('r1').value;
+}
+	localStorage.setItem('Preference','soundPreference.value');
+</script>
+-->
+
+</body>
+</html>
