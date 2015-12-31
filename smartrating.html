@@ -1,25 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<!--    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> -->
 	<link rel="stylesheet" href="stylesheets/style.css" type="text/css">
-    <!--
-    Not sure if this is a mistake or just wasn't copied over...leaving as a reminder for now
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    -->
+    <title> Rate What You Heard </title>
+  </head>
 
-	<title> Rate What You Heard </title>
-
-	</head>
-  
   <body>
-
-
-<!-- <h1>Instructions</h1> 
-	
-Run number <input type="text" id="code" readonly="readonly"> out of 32.
-	trialnum = localStorage.getItem('trialnum'); -->
-
   <div id="header">
     <div><h2> Instructions: <br>Think about the sound of the sentences you just heard as you answer the questions below. </h2></div>
   </div>
@@ -87,28 +74,6 @@ Run number <input type="text" id="code" readonly="readonly"> out of 32.
 		else if(document.getElementById('compinline').checked) { localStorage.setItem('CompletelyInLine', '1'); }
 		else { console.log('nothing is checked expectations'); }
 
-/*		$("input[type='radio'][name='expectations']:checked").val();
-		switch(document.getElementById('expectations').value) { // convert 5-valued radio button selection to 5 binary columns
-			
-			case 1:
-				localStorage.setItem('CompletelyOpposite', '1'); 
-				break;
-			case 2:
-				localStorage.setItem('SomewhatOpposite', '1'); 
-				break;
-			case 3:
-				localStorage.setItem('Neutral', '1'); 
-				break;
-			case 4:
-				localStorage.setItem('SomewhatInLine', '1');
-				break;
-			case 5:
-				localStorage.setItem('CompletelyInLine', '1');
-				break;
-
-		}
-*/
-//		localStorage.setItem('HearDifference', document.getElementById('difference').value); 
 
 		if(document.getElementById('differenceyes').checked) { localStorage.setItem('HearDifference', '1'); }
 		else if(document.getElementById('differenceno').checked) { localStorage.setItem('HearDifference', '0'); }
@@ -117,28 +82,7 @@ Run number <input type="text" id="code" readonly="readonly"> out of 32.
 		window.location.assign('main_smartbutton.html');
 	}
    </script>
-   
- <!--<script type ="text/javascript">
- function nextPage() {
 
-    set fso = CreateObject("Scripting.FileSystemObject");  
-    set s = fso.CreateTextFile("C:\Users\SKatseff\Desktop\test.txt", True);
-    s.writeline(document.getElementById('expectations').value);
-    s.writeline(document.getElementById('difference').value);
-    s.Close();
- }
-  </script>
-  -->
- 
- 
-<!--
-<script>
-	if (document.getElementById('r1').checked) {
-  rate_value = document.getElementById('r1').value;
-}
-	localStorage.setItem('Preference','soundPreference.value');
-</script>
--->
 
 </body>
 </html>
