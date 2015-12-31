@@ -1,49 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
 <!--    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> -->
 	<link rel="stylesheet" href="stylesheets/style.css" type="text/css">
     <title> Rate What You Heard </title>
 	
 	<script>
-    function saveToSpreadsheet(){
-	
-	  localStorageKeyNamesInOrder = ['subjectnum', 'trialnum', 'CompletelyOpposite', 'SomewhatOpposite', 'Neutral', 'SomewhatInLine', 'CompletelyInLine', 'HearDifference'];
-    newDataStructure = []
-    var keyname;
+      function saveToSpreadsheet(){
+	    localStorageKeyNamesInOrder = ['subjectnum', 'trialnum', 'CompletelyOpposite', 'SomewhatOpposite', 'Neutral', 'SomewhatInLine', 'CompletelyInLine', 'HearDifference'];
+        newDataStructure = []
+        var keyname;
 
-    for(var i=0; i<localStorageKeyNamesInOrder.length; i++) {
-      keyname = localStorageKeyNamesInOrder[i]
-      newDataStructure.push(localStorage[keyname])
-    }
-    var request = new XMLHttpRequest();
-    request.open('POST', 'https://rocky-springs-8858.herokuapp.com/entries', true);
+        for(var i=0; i<localStorageKeyNamesInOrder.length; i++) {
+          keyname = localStorageKeyNamesInOrder[i]
+          newDataStructure.push(localStorage[keyname])
+        }
+        var request = new XMLHttpRequest();
+        request.open('POST', 'https://rocky-springs-8858.herokuapp.com/entries', true);
 
-    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    request.setRequestHeader('X-Sheet-Key', '1z_W-b6OO6p-VPIR5ae4R5DefHB0iXNkGhPpIbnl_XlY');
+        request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        request.setRequestHeader('X-Sheet-Key', '1z_W-b6OO6p-VPIR5ae4R5DefHB0iXNkGhPpIbnl_XlY');
 
-    request.onreadystatechange = function() {
-	console.log(request.readyState);
-	console.log(request.status);
-      if(request.readyState == 4 && request.status == 200) {
+        request.onreadystatechange = function() {
+	    
+		  console.log(request.readyState // Dec 31: for debug
+	      console.log(request.status);
+        
+		  if(request.readyState == 4 && request.status == 200) {
         // looks like everything worked...do whatever you want
         // here (redirect, etc)
-//		request.send(JSON.stringify(newDataStructure));
-//		window.location.assign('main_smartbutton.html');
-//		console.log(newDataStructure);
-       console.log(request); //prints out result in your JavaScript console
-      }
-    }
-    request.send(JSON.stringify(newDataStructure));
-	    console.log(newDataStructure);
-		window.location.assign('main_smartbutton.html');
-	}
- 
- </script>
+          console.log(request); //prints out result in your JavaScript console
+          }
+        } 
+      request.send(JSON.stringify(newDataStructure));
+	  console.log(newDataStructure);
+      window.location.assign('main_smartbutton.html');
+	  }
+  </script>
 
-  </head>
+</head>
 
-  <body>
+<body>
   <div id="header">
     <div><h2> Instructions: <br>Think about the sound of the sentences you just heard as you answer the questions below. </h2></div>
   </div>
@@ -117,7 +114,6 @@
 		else { console.log('nothing is checked difference'); }	
 
         saveToSpreadsheet();	
-
 	}
 </script>
 
