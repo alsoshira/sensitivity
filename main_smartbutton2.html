@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<!--    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">-->
+	<link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+
+	<title> Ready for the next sentences? </title>
+  </head>
+  <body>
+  <div id="header">
+  </div>
+  <div id="contents">
+
+					<h2>You have completed <input type="text" id="trial" readonly="readonly" size="2"> out of 7 trials!</h2>
+					<p>When you're ready for the next one, click the continue button below and tell the experimenter that you are ready.</p><br>
+					<span><button id="main" onclick="nextPage()" type="button">CONTINUE</button></span>
+ </div>
+
+
+<script>
+	var trialnum = Number(localStorage.getItem('trialnum'));
+//	console.log(trialnum);
+
+	if (isNaN(trialnum)) {
+		trialnum = 0;
+	}
+	document.getElementById("trial").value = trialnum;
+//	document.getElementById("trial").innerHTML = trialnum;
+
+//	console.log(trialnum);		
+	function nextPage(){
+		trialnum = Number(trialnum);
+		
+		rating = localStorage.getItem('Rating');
+		if(trialnum == 0) { 
+			//concatenate string 'trial' with trialnum, save to curcol
+			part1 = "trial";
+			part2 = trialnum.toString();
+			curcol=part1.concat(part2); 
+			localStorage.setItem(curcol,rating); 
+			trialnum = trialnum + 1;
+			localStorage.setItem('trialnum',trialnum); 
+			window.location.assign('smart_instructions2.html');
+		}
+		
+		else if(trialnum < 7) { <!-- 7 scenarios total -->
+			//concatenate string 'trial' with trialnum, save to curcol
+			part1 = "trial";
+			part2 = trialnum.toString();
+			curcol=part1.concat(part2); 
+			localStorage.setItem(curcol,rating);
+			trialnum = trialnum + 1; 
+			localStorage.setItem('trialnum',trialnum);
+			window.location.assign('smartrating2.html');
+		}
+		else { <!-- Else call the thank you page -->
+			part1 = "trial";
+			part2 = trialnum.toString();
+			curcol=part1.concat(part2); 
+			localStorage.setItem(curcol,rating); 
+			localStorage.setItem('trialnum', null); 
+			window.location.assign('thanks_smartbutton2.html'); 
+		} 
+}
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+ <!--   <link rel="stylesheet" href="stylesheets/style.css"> -->
+	<link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+
+	<title> Ready for the next sentences? </title>
+  </head>
+  <body>
+    <div id="contents">		
+
+      <h2>You are subject number <input type="text" id="subjnum" size="2">.</h2>	
+      <p>
+					We are interested in your opinions on some new buttons that we have designed to adjust the sound of your hearing aids.  
+					When you are ready, your experimenter will play some sentences for you. Push the buttons to adjust the sound. 
+					Then answer the questions we ask you. 
+	  </p><br>
+					<span><button id="main" onclick="nextPage()" type="button">CONTINUE</button></span>
+
+	  <br><br><br>
+      <br><br><br>
+    </div>
+
+    <script>
+	  function nextPage(){
+	    var subjectnum;
+		subjectnum = document.getElementById("subjnum").value;
+		localStorage.setItem('subjectnum',subjectnum);
+		window.location.assign('smartrating.html');
+  	  }
+    </script>
+
+  </body>
+</html>

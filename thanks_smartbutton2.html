@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script src="js/ua-parser.min.js"></script>
+	<link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+  </head>
+  <body>
+
+	<div id="contents">
+			<h1>Thanks for participating!</h1>
+	</div>
+
+  <script>
+    var parser = new UAParser();
+	var browser = parser.getBrowser();
+    console.log(browser);
+	localStorage.removeItem('Browser');	
+	localStorage.setItem('Browser',JSON.stringify(browser));
+  </script>
+
+  <script>
+//fakeLocalStorageObject = {key1: "Tom", key2: "Kersten", arrayOfValues: ['1', '2']};
+    localStorageKeyNamesInOrder = ['subjectnum', 'trial1', 'trial2', 'trial3', 'trial4', 'trial5', 'trial6', 'trial7'];
+    newDataStructure = []
+    var keyname;
+
+    for(var i=0; i<localStorageKeyNamesInOrder.length; i++) {
+      keyname = localStorageKeyNamesInOrder[i]
+      newDataStructure.push(localStorage[keyname])
+    }
+
+    console.log(newDataStructure); 
+
+    var request = new XMLHttpRequest();
+    request.open('POST', 'https://rocky-springs-8858.herokuapp.com/entries', true);
+
+    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.setRequestHeader('X-Sheet-Key', '1z_W-b6OO6p-VPIR5ae4R5DefHB0iXNkGhPpIbnl_XlY');
+
+    request.onreadystatechange = function() {
+      if(request.readyState == 4 && request.status == 200) {
+        // looks like everything worked...do whatever you want
+        // here (redirect, etc)
+        console.log(request); //prints out result in your JavaScript console
+      }
+    }
+    request.send(JSON.stringify(newDataStructure));
+
+
+</script>
+  
+</body>
+</html>

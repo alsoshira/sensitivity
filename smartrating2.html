@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> -->
+	<link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+    <title> Rate What You Heard </title>
+
+</head>
+
+<body>
+  <div id="header">
+    <div><h2> Instructions: <br>Think about the sound of the sentences you just heard as you answer the questions below. </h2></div>
+  </div>
+
+  <div id="contents">
+    <br>
+
+    <p>1. Rate how well the button did what you <b>expected</b> it to do using the scale below.</p>
+
+    <table style="border: 1px solid black">  
+      <center>
+      <tr align=center>
+        <td>Completely OPPOSITE of my expectations <br> 
+	    <input type="radio" name="expectations" value="1" id="compopp" 
+                  title="completely opposite"></td>
+        <td>Somewhat OPPOSITE of my expectations <br>
+	    <input type="radio" name="expectations" value="2" id="someopp" 
+                 title="somewhat opposite"></td> 
+        <td>NEITHER in line with nor opposite of my expectations <br>
+	    <input type="radio" name="expectations" value="3" id="neutral" 
+                 title="neutral"></td>
+	    <td>Somewhat IN LINE WITH my expectations <br>
+	    <input type="radio" name="expectations" value="4" id="someinline"
+                 title="somewhat in line"></td>
+	    <td>Completely IN LINE WITH my expectations <br>
+	    <input type="radio" name="expectations" value="5" id="compinline"
+                 title="completely in line"></td> 
+      </tr>
+      </center>
+    </table>
+  
+  
+  <br><br>
+  <p>2. Did you hear a <b>difference</b> in the sound when you pushed the button?</p>
+
+    <table style="border: 1px solid black" width=30%>
+      <tr align=center>
+        <td>YES <input type="radio" name="difference" value="1" id="differenceyes" 
+                 title="yes"></td>
+      </tr>
+      <tr align=center>
+	    <td>NO <input type="radio" name="difference" value="2" id="differenceno" 
+                 title="no"></td> 
+      </tr>
+    </table>
+
+  <br>
+  
+    <button id="submit" onclick="nextPage()" type="button">Submit</button>
+  
+  </div>
+  
+<script> 
+	function nextPage(){
+		localStorage.setItem('Rating', 0); 
+				
+		if(document.getElementById('compopp').checked) { localStorage.setItem('Rating', '1'); }
+		else if(document.getElementById('someopp').checked) { localStorage.setItem('Rating', '2'); }
+		else if(document.getElementById('neutral').checked) { localStorage.setItem('Rating', '3'); }
+		else if(document.getElementById('someinline').checked) { localStorage.setItem('Rating', '4'); }
+		else if(document.getElementById('compinline').checked) { localStorage.setItem('Rating', '5'); }
+		else { console.log('nothing is checked expectations'); }
+
+
+		if(document.getElementById('differenceyes').checked) { localStorage.setItem('HearDifference', '1'); }
+		else if(document.getElementById('differenceno').checked) { localStorage.setItem('HearDifference', '0'); }
+		else { console.log('nothing is checked difference'); }	
+
+        window.location.assign('main_smartbutton.html');	
+	}
+</script>
+
+
+
+</body>
+</html>
