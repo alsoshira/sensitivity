@@ -19,6 +19,10 @@
 
 <script>
 	var trialnum = Number(localStorage.getItem('trialnum'));
+	var part1 = "trial";
+	var part1a = "diff";
+	var rating = 0;
+	var heardiff = 0;
 //	console.log(trialnum);
 
 	if (isNaN(trialnum)) {
@@ -32,6 +36,7 @@
 		trialnum = Number(trialnum);
 		
 		rating = localStorage.getItem('Rating');
+		heardiff = localStorage.getItem('HearDifference');
 		if(trialnum == 0) { 
 			//concatenate string 'trial' with trialnum, save to curcol
 			part1 = "trial";
@@ -51,7 +56,9 @@
 			curcol=part1.concat(part2);
             curcoldiff=part1a.concat(part2);			
 			localStorage.setItem(curcol,rating);
-			localStorage.setItem(curcoldiff,rating);
+			localStorage.setItem(curcoldiff,heardiff);
+			console.log(curcol);
+			console.log(curcoldiff);
 			trialnum = trialnum + 1; 
 			localStorage.setItem('trialnum',trialnum);
 			window.location.assign('smartrating2.html');
@@ -63,7 +70,7 @@
 			curcol=part1.concat(part2); 
 			curcoldiff=part1a.concat(part2);
 			localStorage.setItem(curcol,rating); 
-			localStorage.setItem(curcoldiff,rating);
+			localStorage.setItem(curcoldiff,heardiff);
 			localStorage.setItem('trialnum', null); 
 			window.location.assign('thanks_smartbutton2.html'); 
 		} 
