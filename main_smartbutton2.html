@@ -46,18 +46,24 @@
 		else if(trialnum < 7) { <!-- 7 scenarios total -->
 			//concatenate string 'trial' with trialnum, save to curcol
 			part1 = "trial";
+			part1a = "diff";
 			part2 = trialnum.toString();
-			curcol=part1.concat(part2); 
+			curcol=part1.concat(part2);
+            curcoldiff=part1a.concat(part2);			
 			localStorage.setItem(curcol,rating);
+			localStorage.setItem(curcoldiff,rating);
 			trialnum = trialnum + 1; 
 			localStorage.setItem('trialnum',trialnum);
 			window.location.assign('smartrating2.html');
 		}
 		else { <!-- Else call the thank you page -->
 			part1 = "trial";
+			part1a = "diff";
 			part2 = trialnum.toString();
 			curcol=part1.concat(part2); 
+			curcoldiff=part1a.concat(part2);
 			localStorage.setItem(curcol,rating); 
+			localStorage.setItem(curcoldiff,rating);
 			localStorage.setItem('trialnum', null); 
 			window.location.assign('thanks_smartbutton2.html'); 
 		} 
